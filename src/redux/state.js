@@ -6,7 +6,8 @@ import { rerenderEntiredTree } from "../rerender";
       PostData:[
         { id: 1, message: "What your are name?", likesCount: 547 },
         { id: 2, message: "What you doing?", likesCount: 788 },
-      ]
+      ],
+      newText:"It-kamasutra"
       
     },
     dialogPage:{
@@ -33,15 +34,24 @@ import { rerenderEntiredTree } from "../rerender";
     }
     }
 
-export let addPost = (postMessage)=>{
+export let addPost = ()=>{
   let newPost = {
     id:3,
-    message:postMessage,
+    message:state.profilePage.newText,
     likesCount:101211
   }
   state.profilePage.PostData.push(newPost);
+  state.profilePage.newText = "";
   rerenderEntiredTree(state);
 }
+
+export let updateNewText = (txt)=>{
+
+  state.profilePage.newText = txt;
+  rerenderEntiredTree(state);
+}
+
+
 
 
   export default state;
