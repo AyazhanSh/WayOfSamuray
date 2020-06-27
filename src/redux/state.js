@@ -1,6 +1,6 @@
-import { rerenderEntiredTree } from "../rerender";
-
-
+let rerenderEntiredTree = ()=>{
+  console.log("state change")
+}
   let state = {
     profilePage:{
       PostData:[
@@ -34,21 +34,24 @@ import { rerenderEntiredTree } from "../rerender";
     }
     }
 
-export let addPost = ()=>{
+export const addPost = ()=>{
   let newPost = {
     id:3,
     message:state.profilePage.newText,
     likesCount:101211
   }
   state.profilePage.PostData.push(newPost);
-  state.profilePage.newText = "";
+  state.profilePage.newText = ""; 
   rerenderEntiredTree(state);
 }
 
-export let updateNewText = (txt)=>{
+export const updateNewText = (txt)=>{
 
   state.profilePage.newText = txt;
   rerenderEntiredTree(state);
+}
+export const subcriber = (observer) =>{
+  rerenderEntiredTree = observer;
 }
 
 
